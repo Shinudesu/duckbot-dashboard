@@ -1,15 +1,23 @@
-# 🚀 Welcome to your new awesome project!
+# Duckbot Dashboard
 
-This project has been created using **webpack-cli**, you can now run
+Dashboard to be used in conjunction with [Duckbot Server & Bot](https://github.com/Shinudesu/DuckBot/tree/main/)
+
+# Installing
 
 ```
-npm run build
+yarn install
 ```
 
-or
+# Building & Running
+
+### For Development
+
+```
+yarn start:dev
+```
+
+### For Production
 
 ```
 yarn build
 ```
-
-to bundle your application

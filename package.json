@@ -8,7 +8,9 @@
     "build": "cross-env NODE_ENV=production webpack --mode=production --node-env=production",
     "build:dev": "cross-env NODE_ENV=development webpack --mode=development",
     "build:prod": "cross-env NODE_ENV=production webpack --mode=production --node-env=production",
-    "serve": "cross-env NODE_ENV=development webpack serve --mode=development"
+    "start:dev": "cross-env NODE_ENV=development webpack serve --mode=development",
+    "lint": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx .",
+    "format": "prettier --write ."
   },
   "devDependencies": {
     "@babel/core": "^7.14.8",
