@@ -3,24 +3,27 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 
-const { DefinePlugin, HotModuleReplacementPlugin } = require('webpack');
+const {
+  EnvironmentPlugin,
+  HotModuleReplacementPlugin,
+  ProvidePlugin,
+} = require('webpack');
 
-const isProduction = process.env.NODE_ENV == 'production';
+const isProduction = process.env.NODE_ENV === 'production';
 
 const stylesHandler = isProduction
   ? MiniCssExtractPlugin.loader
   : 'style-loader';
 
 const config = {
-  target: 'web',
-  entry: ['./src/index.tsx'],
+  entry: [path.resolve(__dirname, 'src/index.tsx')],
   output: {
     path: path.resolve(__dirname, 'dist'),
     clean: true,
     publicPath: '/',
   },
+  devtool: isProduction ? false : 'inline-source-map',
   devServer: {
     publicPath: '/',
     open: true,
@@ -32,13 +35,13 @@ const config = {
     transportMode: 'ws',
   },
   plugins: [
-    new HotModuleReplacementPlugin(),
-    new DefinePlugin({
-      'process.env': '{}',
-      global: {},
+    new ProvidePlugin({
+      process: 'process/browser',
     }),
+    new HotModuleReplacementPlugin(),
+    new EnvironmentPlugin(['NODE_ENV']),
     new HtmlWebpackPlugin({
-      template: './public/index.html',
+      template: path.resolve(__dirname, 'public/index.html'),
     }),
   ],
   module: {
@@ -50,6 +53,7 @@ const config = {
       },
       {
         test: /\.css$/i,
+        include: /node_modules/,
         use: [stylesHandler, 'css-loader'],
       },
       {
@@ -58,15 +62,15 @@ const config = {
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
-        type: 'asset',
+        use: ['url-loader'],
       },
-
-      // Add your rules for custom modules here
-      // Learn more about loaders from https://webpack.js.org/loaders/
     ],
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
+    alias: {
+      process: 'process/browser',
+    },
   },
 };
 
@@ -75,8 +79,6 @@ module.exports = () => {
     config.mode = 'production';
 
     config.plugins.push(new MiniCssExtractPlugin());
-
-    config.plugins.push(new WorkboxWebpackPlugin.GenerateSW());
   } else {
     config.mode = 'development';
   }

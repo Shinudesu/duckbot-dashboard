@@ -1,15 +1,20 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
+import Store from './store';
 import ApplicationRoutes from './routes';
-import './app.scss';
+
+import 'semantic-ui-css/semantic.min.css';
 
 const Application: React.FC = () => {
   return (
     <>
-      <BrowserRouter>
-        <ApplicationRoutes />
-      </BrowserRouter>
+      <Provider store={Store}>
+        <BrowserRouter>
+          <ApplicationRoutes />
+        </BrowserRouter>
+      </Provider>
     </>
   );
 };

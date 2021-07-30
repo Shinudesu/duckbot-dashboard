@@ -1,6 +1,8 @@
 import React from 'react';
 import { Navigate, useRoutes } from 'react-router';
 
+import LandingPage from '../pages/landing';
+
 const ApplicationRoutes: React.FC = () => {
   const routes = useRoutes([
     {
@@ -9,7 +11,7 @@ const ApplicationRoutes: React.FC = () => {
     },
     {
       path: '/',
-      element: <div>Hello World!</div>,
+      element: <LandingPage />,
     },
     {
       path: '404',
