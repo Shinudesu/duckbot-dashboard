@@ -1,4 +1,4 @@
-import { Container, Segment, Image as SImage } from 'semantic-ui-react';
+import { Container, Segment, Image as SImage, Header } from 'semantic-ui-react';
 import styled from 'styled-components';
 
 export const LandingPageContainer = styled.div`
@@ -39,5 +39,12 @@ export const LandingFooter = styled(Segment)`
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+  }
+`;
+
+export const HeaderLogo = styled(Header)`
+  span {
+    font-weight: normal;
+    font-size: 0.9em;
   }
 `;

@@ -2,6 +2,10 @@
 import { Header } from 'semantic-ui-react';
 import styled from 'styled-components';
 
+export const DashboardContainer = styled.div`
+  height: 100vh;
+`;
+
 export const HeaderLogo = styled(Header)`
   span {
     font-weight: normal;
