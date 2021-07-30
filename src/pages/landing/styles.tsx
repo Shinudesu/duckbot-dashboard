@@ -1,12 +1,5 @@
-import { Container, Segment, Image as SImage, Header } from 'semantic-ui-react';
+import { Container, Segment, Image as SImage } from 'semantic-ui-react';
 import styled from 'styled-components';
-
-export const HeaderLogo = styled(Header)`
-  span {
-    font-weight: normal;
-    font-size: 0.9em;
-  }
-`;
 
 export const LandingPageContainer = styled.div`
   height: 100vh;
@@ -23,19 +16,28 @@ export const LandingSegment = styled(Segment)`
 export const LandingContent = styled(Container)`
   flex: 1;
   justify-content: center;
+  margin-top: 3em;
 `;
 
 export const ContentWrapper = styled.div`
   vertical-align: middle;
   position: relative;
-  margin-top: 10rem;
   flex: 1;
 `;
 
 export const DuckAvatar = styled(SImage)`
-  display: block;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
+export const LandingFooter = styled(Segment)`
+  span {
+    font-size: 12px;
+    color: gray;
+    cursor: normal;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
 `;
