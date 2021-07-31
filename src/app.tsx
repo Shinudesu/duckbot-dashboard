@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
@@ -7,7 +7,7 @@ import ApplicationRoutes from './routes';
 
 import 'semantic-ui-css/semantic.min.css';
 
-const Application: React.FC = () => {
+const Application: FC = () => {
   return (
     <>
       <Provider store={Store}>

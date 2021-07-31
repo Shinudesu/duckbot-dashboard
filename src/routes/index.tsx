@@ -1,25 +1,22 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Navigate, useRoutes } from 'react-router';
 
 import LandingPage from '../pages/landing';
+import DashboardPage from '../pages/dashboard';
 
-const ApplicationRoutes: React.FC = () => {
+const ApplicationRoutes: FC = () => {
   const routes = useRoutes([
     {
       path: '*',
-      element: <Navigate to="/404" />,
+      element: <Navigate to="/" />,
     },
     {
       path: '/',
       element: <LandingPage />,
     },
     {
-      path: '404',
-      element: (
-        <div>
-          <h1>404 page not found</h1>
-        </div>
-      ),
+      path: 'dashboard/*',
+      element: <DashboardPage />,
     },
   ]);
 
