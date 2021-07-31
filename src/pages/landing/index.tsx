@@ -1,5 +1,7 @@
 import React, { FC, FormEvent } from 'react';
-import { Button, Header, Menu, Segment } from 'semantic-ui-react';
+import { Button, Header, Segment } from 'semantic-ui-react';
+
+import Navbar from '../../components/navbar';
 
 import {
   LandingSegment,
@@ -8,24 +10,9 @@ import {
   ContentWrapper,
   DuckAvatar,
   LandingFooter,
-  HeaderLogo,
 } from './styles';
 
 import { API_AUTH_URL } from '../../constants';
-
-const Navbar: FC = () => {
-  return (
-    <>
-      <Menu inverted borderless>
-        <Menu.Item>
-          <HeaderLogo as="h2">
-            Duckbot<span>Dashboard</span>
-          </HeaderLogo>
-        </Menu.Item>
-      </Menu>
-    </>
-  );
-};
 
 const LandingPage: FC = () => {
   const authenticate = (e: FormEvent<HTMLButtonElement>) => {
